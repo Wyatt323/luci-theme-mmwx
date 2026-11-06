@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN" data-darkmode="false">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MMWX LuCI theme preview</title>
+  <link rel="icon" href="htdocs/luci-static/mmwx/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="htdocs/luci-static/mmwx/css/cascade.css">
+  <link rel="stylesheet" href="htdocs/luci-static/mmwx/mmwx.css">
+</head>
+<body class="logged-in" data-page="admin-system-fileassistant">
+  <div class="main">
+    <div class="main-left" id="mainmenu">
+      <div class="sidenav-header d-flex align-items-center"><a class="brand" href="#">OpenWrt</a></div>
+      <ul class="nav active">
+        <li class="slide"><a href="#" class="menu" data-title="Status">状态</a><ul class="slide-menu"><li><a class="food" href="#">概览</a></li><li><a class="food" href="#">路由</a></li></ul></li>
+        <li class="slide active"><a href="#" class="menu active" data-title="System">系统</a><ul class="slide-menu active"><li><a class="food" href="#">系统</a></li><li class="active"><a class="food" href="#">文件管理</a></li><li><a class="food" href="#">软件包</a></li></ul></li>
+        <li class="slide"><a href="#" class="menu" data-title="Services">服务</a><ul class="slide-menu"><li><a class="food" href="#">网络唤醒</a></li><li><a class="food" href="#">OpenClash</a></li></ul></li>
+        <li class="slide"><a href="#" class="menu" data-title="Network">网络</a><ul class="slide-menu"><li><a class="food" href="#">接口</a></li><li><a class="food" href="#">防火墙</a></li></ul></li>
+        <li><a href="#" class="food" data-title="Log_out">退出</a></li>
+      </ul>
+    </div>
+    <div class="main-right">
+      <header class="bg-primary"><div class="fill"><div class="container"><div class="flex1"><a class="showSide" role="button" aria-label="打开菜单" tabindex="0"></a><a class="brand" href="#">OpenWrt</a></div><div class="status" id="indicators"><span data-style="active">刷新</span></div></div></div></header>
+      <div class="darkMask"></div>
+      <div id="maincontent"><div class="container">
+        <h2>文件管理【集成上传删除及安装，非专业人员请谨慎操作】</h2>
+        <fieldset class="cbi-section fb-container">
+          <input id="current-path" type="text" class="current-path cbi-input-text" value="/">
+          <div class="panel-container"><div class="panel-title">文件列表</div><button id="upload-toggle" class="cbi-button cbi-button-edit">上传文件</button></div>
+          <div class="upload-container" id="upload-container"><input id="upload-file" name="upload-file" class="upload-file" type="file"><button type="button" class="cbi-button cbi-input-apply">执行上传</button></div>
+          <div id="list-content"><table class="cbi-section-table"><tbody>
+            <tr class="cbi-section-table-row cbi-rowstyle-1"><td class="cbi-value-field folder-icon"><strong>bin</strong></td><td class="cbi-value-field cbi-value-date">23 Aug 22:34</td><td class="cbi-value-field cbi-value-size">909</td><td class="cbi-value-field cbi-value-perm">drwxr-xr-x</td><td class="cbi-section-table-cell"><button class="cbi-button cbi-button-edit">重命名</button> <button class="cbi-button cbi-button-remove">删除</button></td></tr>
+            <tr class="cbi-section-table-row cbi-rowstyle-2"><td class="cbi-value-field folder-icon"><strong>这是一个较长的文件夹名称</strong></td><td class="cbi-value-field cbi-value-date">23 Oct 20:54</td><td class="cbi-value-field cbi-value-size">4.0K</td><td class="cbi-value-field cbi-value-perm">drwxr-xr-x</td><td class="cbi-section-table-cell"><button class="cbi-button cbi-button-edit">重命名</button> <button class="cbi-button cbi-button-remove">删除</button></td></tr>
+          </tbody></table></div>
+        </fieldset>
+        <div class="cbi-map"><h2>系统</h2><fieldset class="cbi-section"><h3>系统属性</h3><ul class="cbi-tabmenu"><li class="cbi-tab"><a href="#">常规设置</a></li><li><a href="#">日志</a></li><li><a href="#">时间同步</a></li></ul><div class="cbi-section-node"><div class="cbi-value"><label class="cbi-value-title" for="hostname">主机名</label><div class="cbi-value-field"><input id="hostname" type="text" value="OpenWrt"></div></div><div class="cbi-value"><label class="cbi-value-title" for="zone">时区</label><div class="cbi-value-field"><select id="zone"><option>Asia/Shanghai</option></select></div></div></div></fieldset><div class="cbi-page-actions"><button class="cbi-button cbi-button-apply">保存并应用</button> <button class="cbi-button cbi-button-save">保存</button> <button class="cbi-button cbi-button-reset">复位</button></div></div>
+        <div class="cbi-section"><h3>资源使用</h3><div class="table" width="100%"><div class="tr"><div class="td">可用内存</div><div class="td"><div class="cbi-progressbar" title="1.64 GiB / 1.94 GiB (84%)"><div style="width:84%"></div></div></div></div></div></div>
+      </div></div>
+      <footer><span>Powered by LuCI · MMWX inspired theme</span><ul class="breadcrumb pull-right" id="modemenu" style="display:none"></ul></footer>
+    </div>
+  </div>
+  <script>
+    const sidebar = document.querySelector('#mainmenu'), right = document.querySelector('.main-right'), mask = document.querySelector('.darkMask'), toggler = document.querySelector('.showSide');
+    function toggleSidebar() { [sidebar, right, mask, toggler].forEach(el => el.classList.toggle('active')); }
+    toggler.addEventListener('click', toggleSidebar); mask.addEventListener('click', toggleSidebar);
+    document.querySelectorAll('.main-left .menu').forEach(link => link.addEventListener('click', event => {
+      event.preventDefault(); const menu = link.nextElementSibling, wasOpen = menu.classList.contains('active');
+      document.querySelectorAll('.slide-menu.active').forEach(other => { other.classList.remove('active'); other.previousElementSibling.classList.remove('active'); });
+      if (!wasOpen) { menu.classList.add('active'); link.classList.add('active'); }
+    }));
+  </script>
+</body>
+</html>

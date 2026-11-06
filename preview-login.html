@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN" data-darkmode="false">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MMWX LuCI login preview</title>
+  <link rel="icon" href="htdocs/luci-static/mmwx/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="htdocs/luci-static/mmwx/cascade.css">
+  <link rel="stylesheet" href="htdocs/luci-static/mmwx/mobile.css" media="only screen and (max-device-width: 854px)">
+  <link rel="stylesheet" href="htdocs/luci-static/mmwx/mmwx-login.css">
+  <style>body.mmwx-auth #modal_overlay{left:0;right:0;opacity:1;visibility:visible}</style>
+</head>
+<body class="mmwx-auth modal-overlay-active">
+  <div id="modal_overlay">
+    <div class="modal login">
+      <h4>OpenWrt</h4>
+      <div class="mmwx-login-intro"><span class="mmwx-login-mark">✦</span><span>需要授权登录</span></div>
+      <form class="cbi-map">
+        <div class="cbi-section"><div class="cbi-section-node">
+          <div class="cbi-value"><label class="cbi-value-title" for="user">用户名</label><div class="cbi-value-field"><input id="user" placeholder="请输入用户名"></div></div>
+          <div class="cbi-value"><label class="cbi-value-title" for="pass">密码</label><div class="cbi-value-field"><input id="pass" type="password" placeholder="请输入密码"></div></div>
+        </div></div>
+      </form>
+      <button class="btn cbi-button-positive important">登录</button>
+    </div>
+  </div>
+</body>
+</html>

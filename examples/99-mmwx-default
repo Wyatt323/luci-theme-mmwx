@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Select MMWX on first boot only when its package is present in the image.
+[ -f /www/luci-static/mmwx/mmwx.css ] || exit 0
+[ -f /usr/share/ucode/luci/template/themes/mmwx/header.ut ] || exit 0
+
+uci set luci.themes.MMWX='/luci-static/mmwx'
+uci set luci.main.mediaurlbase='/luci-static/mmwx'
+uci commit luci
+
+exit 0

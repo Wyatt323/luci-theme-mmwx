@@ -1,0 +1,8 @@
+#!/bin/sh
+
+uci -q get luci.themes.MMWX >/dev/null || {
+	uci set luci.themes.MMWX=/luci-static/mmwx
+	uci commit luci
+}
+
+exit 0
