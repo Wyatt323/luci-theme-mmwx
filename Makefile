@@ -7,7 +7,7 @@ LUCI_DEPENDS:=+luci-base
 LUCI_URL:=https://github.com/Wyatt323/luci-theme-mmwx
 PKG_LICENSE:=Apache-2.0
 PKG_VERSION:=0.1.0
-PKG_RELEASE:=2
+PKG_RELEASE:=3
 LUCI_MINIFY_CSS:=0
 LUCI_MINIFY_JS:=0
 
@@ -25,3 +25,5 @@ define Package/luci-theme-mmwx/postrm
 endef
 
 include $(TOPDIR)/feeds/luci/luci.mk
+
+# call BuildPackage - OpenWrt buildroot signature
